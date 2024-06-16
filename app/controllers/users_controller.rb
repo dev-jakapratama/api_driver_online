@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authenticate_request, only: [:profile]
 
   # GET /users
   def index
@@ -10,6 +11,10 @@ class UsersController < ApplicationController
   # GET /users/:id
   def show
     render json: @user
+  end
+
+  def profile
+    render json: @current_user
   end
 
   # POST /users

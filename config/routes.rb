@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users
+  post 'login', to: 'auth#login'
+  post 'refresh', to: 'auth#refresh'
+  get 'profile', to: 'users#profile'
+
+  # https://chatgpt.com/c/759440de-6000-4027-b28f-c125ea364895
 end
