@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_15_173712) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_16_184832) do
+  create_table "drivers", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+    t.string "email"
+    t.string "phone"
+    t.string "vehicle_details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "refresh_tokens", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "token"
