@@ -480,3 +480,235 @@ Processing by DriversController#show as HTML
 Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 528)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIsDriver (20240625080438)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "users" ADD "is_driver" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240625080438') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for 127.0.0.1 at 2024-06-25 15:18:43 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"ojol 1", "email"=>"ojol_1@jaka.com", "password"=>"[FILTERED]", "is_driver"=>true}}
+[31mUnpermitted parameter: :name. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fb0a1df8c08>, params: {"user"=>{"name"=>"ojol 1", "email"=>"ojol_1@jaka.com", "password"=>"[FILTERED]", "is_driver"=>true}, "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:24:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "email", "phone", "is_active", "created_at", "updated_at", "password_digest", "is_driver") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", nil], ["password", "[FILTERED]"], ["email", "ojol_1@jaka.com"], ["phone", nil], ["is_active", 1], ["created_at", "2024-06-25 08:18:43.944745"], ["updated_at", "2024-06-25 08:18:43.944745"], ["password_digest", "[FILTERED]"], ["is_driver", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:24:in `create'
+Completed 201 Created in 221ms (Views: 0.4ms | ActiveRecord: 9.3ms | Allocations: 9351)
+
+
+Started GET "/users" for ::1 at 2024-06-25 15:18:54 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 954)
+
+
+Started GET "/login" for ::1 at 2024-06-25 15:19:20 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+Started GET "/auth/login" for ::1 at 2024-06-25 15:19:37 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/auth/login"):
+  
+Started GET "/users" for ::1 at 2024-06-25 15:20:12 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 822)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-06-25 15:21:08 +0700
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"ojol2", "name"=>"ojol 2", "email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]", "is_driver"=>true}}
+[31mUnpermitted parameter: :name. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fb0a1daf968>, params: {"user"=>{"username"=>"ojol2", "name"=>"ojol 2", "email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]", "is_driver"=>true}, "controller"=>"users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:24:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "email", "phone", "is_active", "created_at", "updated_at", "password_digest", "is_driver") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "ojol2"], ["password", "[FILTERED]"], ["email", "ojol_2@jaka.com"], ["phone", nil], ["is_active", 1], ["created_at", "2024-06-25 08:21:09.066216"], ["updated_at", "2024-06-25 08:21:09.066216"], ["password_digest", "[FILTERED]"], ["is_driver", 1]]
+  ↳ app/controllers/users_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:24:in `create'
+Completed 201 Created in 214ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 1785)
+
+
+Started GET "/users" for ::1 at 2024-06-25 15:21:12 +0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 874)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:21:44 +0700
+Processing by AuthController#login as */*
+  Parameters: {"username"=>"ojol2", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/application_controller.rb:16)
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 357)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:23:39 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/application_controller.rb:16)
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 191)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:24:17 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/application_controller.rb:16)
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 256)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:24:35 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/application_controller.rb:16)
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 503)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:26:24 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/application_controller.rb:17)
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from decode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/application_controller.rb:17)
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 401 Unauthorized in 70223ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 106923)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:27:39 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `login'
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from encode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:37)
+Completed 500 Internal Server Error in 2366ms (ActiveRecord: 4.7ms | Allocations: 73464)
+
+
+  
+NoMethodError (undefined method `refresh_tokens' for #<User id: 5, username: "ojol2", password: nil, email: "ojol_2@jaka.com", phone: nil, is_active: true, created_at: "2024-06-25 08:21:09.066216000 +0000", updated_at: "2024-06-25 08:21:09.066216000 +0000", password_digest: [FILTERED], is_driver: true>):
+  
+app/controllers/auth_controller.rb:9:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:28:20 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `login'
+DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials` and will be removed in Rails 7.2. (called from encode_token at /home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:37)
+Completed 500 Internal Server Error in 3948ms (ActiveRecord: 14.7ms | Allocations: 53639)
+
+
+  
+NoMethodError (undefined method `refresh_tokens' for #<User id: 5, username: "ojol2", password: nil, email: "ojol_2@jaka.com", phone: nil, is_active: true, created_at: "2024-06-25 08:21:09.066216000 +0000", updated_at: "2024-06-25 08:21:09.066216000 +0000", password_digest: [FILTERED], is_driver: true>):
+  
+app/controllers/auth_controller.rb:9:in `login'
+Started GET "/" for ::1 at 2024-06-25 15:48:39 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/doterb/.rvm/gems/ruby-3.2.2/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/doterb/.rvm/gems/ruby-3.2.2/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 375)
+Completed 200 OK in 7ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 4193)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:48:49 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 2695ms (ActiveRecord: 3.5ms | Allocations: 109138)
+
+
+  
+NoMethodError (undefined method `refresh_tokens' for #<User id: 5, username: "ojol2", password: nil, email: "ojol_2@jaka.com", phone: nil, is_active: true, created_at: "2024-06-25 08:21:09.066216000 +0000", updated_at: "2024-06-25 08:21:09.066216000 +0000", password_digest: [FILTERED], is_driver: true>):
+  
+app/controllers/auth_controller.rb:9:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:51:06 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ (rdbg)//home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:1:in `login'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ (rdbg)//home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:1:in `login'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ (rdbg)//home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:1:in `login'
+  [1m[36mRefreshToken Load (0.4ms)[0m  [1m[34mSELECT "refresh_tokens".* FROM "refresh_tokens" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/auth_controller.rb:4:in `login'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 256017ms (ActiveRecord: 1.0ms | Allocations: 338082)
+
+
+  
+NoMethodError (undefined method `refresh_tokens' for #<User id: 5, username: "ojol2", password: nil, email: "ojol_2@jaka.com", phone: nil, is_active: true, created_at: "2024-06-25 08:21:09.066216000 +0000", updated_at: "2024-06-25 08:21:09.066216000 +0000", password_digest: [FILTERED], is_driver: true>):
+  
+app/controllers/auth_controller.rb:9:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:55:30 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 1736ms (ActiveRecord: 8.1ms | Allocations: 52953)
+
+
+  
+NoMethodError (undefined method `refresh_tokens' for #<User id: 5, username: "ojol2", password: nil, email: "ojol_2@jaka.com", phone: nil, is_active: true, created_at: "2024-06-25 08:21:09.066216000 +0000", updated_at: "2024-06-25 08:21:09.066216000 +0000", password_digest: [FILTERED], is_driver: true>):
+  
+app/controllers/auth_controller.rb:9:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:59:07 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ (rdbg)//home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:1:in `login'
+  [1m[36mRefreshToken Load (0.1ms)[0m  [1m[34mSELECT "refresh_tokens".* FROM "refresh_tokens" WHERE "refresh_tokens"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ (rdbg)//home/doterb/Desktop/Jaka Pratama/Test Spasial /api_online_driver/api_driver_online/app/controllers/auth_controller.rb:1:in `login'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `login'
+  [1m[36mCACHE RefreshToken Load (0.0ms)[0m  [1m[34mSELECT "refresh_tokens".* FROM "refresh_tokens" WHERE "refresh_tokens"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:9:in `login'
+Completed 500 Internal Server Error in 32537ms (Views: 0.5ms | ActiveRecord: 8.1ms | Allocations: 167490)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...); return".):
+  
+app/controllers/auth_controller.rb:12:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-06-25 15:59:49 +0700
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:4:in `login'
+  [1m[36mRefreshToken Load (0.1ms)[0m  [1m[34mSELECT "refresh_tokens".* FROM "refresh_tokens" WHERE "refresh_tokens"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:8:in `login'
+Completed 200 OK in 216ms (Views: 0.1ms | ActiveRecord: 1.9ms | Allocations: 10334)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-06-25 16:00:53 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthController#login as */*
+  Parameters: {"email"=>"ojol_2@jaka.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ojol_2@jaka.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:4:in `login'
+  [1m[36mRefreshToken Load (0.1ms)[0m  [1m[34mSELECT "refresh_tokens".* FROM "refresh_tokens" WHERE "refresh_tokens"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:8:in `login'
+Completed 200 OK in 244ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 33547)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTrips (20240625091640)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "trips" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "driver_id" integer, "pickup_location" varchar, "dropoff_location" varchar, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240625091640') RETURNING "version"[0m
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate_request
+  # before_action :authenticate_request
 
   def authenticate_request
     header = request.headers['Authorization']
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
   private
 
   def decode_token(token)
-    JWT.decode(token, Rails.application.secrets.secret_key_base)[0].symbolize_keys
+    JWT.decode(token, Rails.application.credentials.jwt_secret)[0].symbolize_keys
   end
     
 end
